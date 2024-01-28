@@ -58,15 +58,9 @@ def flush_output (data):
     if isinstance(data, Graphics):
         try:
             #Save it to a file
-            filename = tempfile.mktemp(suffix='.ps')
-            data.save(filename)
+            filename = tempfile.mktemp(suffix='.pdf')
 
-            #Read the file
-            ps_file = open(filename)
-            ps_contents = ps_file.read()
-            ps_file.close()
-
-            flush_ps(ps_contents)
+            flush_file(filename)
         except:
             pass
     elif isinstance(data, SageObject):
